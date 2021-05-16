@@ -15,8 +15,9 @@
             <error-output class="text-error" for="text"></error-output>
         </div>
         <div>
-            <label for="pwd"> Enter a password: </label>
-            <input type="password" id="pwd" name="pwd" required>
+            <label for="password"> Enter a password: </label>
+            <input type="password" id="password" name="password" required>
+            <error-output class="password" for="password"></error-output>
         </div>
         <div>
             <label for="email"> Enter email-ID: </label>
@@ -62,6 +63,15 @@
             if (nameRegex.test(text.value))
                 textError.textContent = "";
             else textError.textContent = "Name is incorrect";
+        });
+
+        const password = document.querySelector('#password');
+        const passwordError = document.querySelector('.password-output');
+        password.addEventListener('input', function() {
+            let passwordRegex = RegExp('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$');
+            if(passwordRegex.test(password.value))
+                passwordError.passwordContent = "";
+            else passwordError.passwordContent = "Invalid password";
         });
 
         const email = document.querySelector('#email');
